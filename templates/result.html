@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Match Analysis Result</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .main-score {
+            background-color: #eef2ff;
+            border: 2px solid #6366f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .main-score h2 {
+            font-size: 42px;
+            color: #4f46e5;
+        }
+
+        .main-score p {
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .breakdown {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .score-row {
+            margin-bottom: 18px;
+        }
+
+        .label-val {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #374151;
+        }
+
+        .bar-container {
+            width: 100%;
+            background-color: #e5e7eb;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.6s ease-in-out;
+        }
+
+        .btn-back {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Match Score Results</h1>
+
+        <!-- Overall Ensemble Score -->
+        <div class="main-score">
+            <h2>{{ results.final_score }}%</h2>
+            <p>Overall ATS Match Score</p>
+        </div>
+
+        <div class="breakdown">
+            <!-- BERT Semantic Score Bar -->
+            <div class="score-row">
+                <div class="label-val">
+                    <span>Semantic Context Match (BERT)</span>
+                    <span>{{ results.semantic_score }}%</span>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill"></div>
+                </div>
+            </div>
+
+            <!-- TF-IDF Skill Score Bar -->
+            <div class="score-row">
+                <div class="label-val">
+                    <span>Skill Keyword Match (TF-IDF)</span>
+                    <span>{{ results.tfidf_score }}%</span>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <a href="/" class="btn-back">← Upload Another CV</a>
+    </div>
+
+</body>
+</html>

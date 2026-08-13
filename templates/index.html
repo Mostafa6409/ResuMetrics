@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Matcher</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #333333;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        p.subtitle {
+            color: #666666;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444444;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #cccccc;
+            border-radius: 8px;
+            background-color: #fafafa;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover {
+            border-color: #007bff;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 14px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>ATS Resume Matcher</h2>
+        <p class="subtitle">Upload candidate CV and paste Job Description to calculate match score.</p>
+
+        
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            
+            
+            <div class="form-group">
+                <label for="cv">Upload Resume / CV (PDF):</label>
+                <input type="file" id="cv" name="cv" accept=".pdf" required>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="jd">Job Description:</label>
+                <textarea id="jd" name="jd" placeholder="Paste the job description text here..." required></textarea>
+            </div>
+
+            
+            <button type="submit">Analyze & Calculate Score</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
